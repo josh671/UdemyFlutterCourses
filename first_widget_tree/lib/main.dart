@@ -5,11 +5,22 @@ void main() => runApp(myApp());
 
 //Home widget
 
-class myApp extends StatelessWidget {
+class myApp extends StatefulWidget {
+
+  @override
+  State<StatefulWidget> createState() {
+      return MyAppState(); 
+    }
+
+}
+
+class MyAppState extends State<myApp>{
   var questionIndex = 0;
-  //adding function
+
   void answerQuestions() {
-    questionIndex = questionIndex + 1;
+    setState(() {
+      questionIndex = questionIndex + 1; 
+    });
     print(questionIndex);
   }
 
