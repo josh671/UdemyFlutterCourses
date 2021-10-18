@@ -1,70 +1,60 @@
-import 'package:flutter/material.dart'; 
-import './questions.dart';
+ import 'package:flutter/material.dart';
+ import 'package:practice_app/question.dart'; 
+ import './answer.dart';
 
-void main() => runApp(MyApp()); 
+ void main()  =>  runApp(myApp()); 
 
 
-class MyApp extends StatefulWidget {
+
+class myApp extends StatefulWidget {
+ 
 
   @override
-  State<StatefulWidget> createState() {
-    return MyAppState(); 
-  }
-} 
+  State<myApp> createState() => _myAppState();
+}
 
-class MyAppState extends State<MyApp>{
+class _myAppState extends State<myApp> {
+//create variables and functions 
   var questionIndex = 0; 
 
-  void answerQuestions(){
-     setState(() {
-       if(questionIndex == 2){
+  void _answerQuestions(){
+    //set state so that it changes question when questionIndex changes
+    setState(() {
+      if(questionIndex == 2){
         questionIndex = 0;
-       }else{
-          questionIndex = questionIndex + 1; 
-       }
+      }else{
+       questionIndex = questionIndex + 1; 
+      }
+    });
       
-     });
-      print(questionIndex); 
+      print(questionIndex);
   }
 
-  @override 
-  Widget build(BuildContext context){
-    //create questions 
-    var questions = ["what's your name?", 
-                      "What's your age?", 
-                      "what's your favorite pet?"]; 
-    //creates scaffolding for widgets to be created 
-    //create within (); 
+  @override
+  Widget build(BuildContext context) {
+    var questions = [
+      "what is your pets name?", 
+      "what is your pets species?", 
+      "how old is your pet?"
+    ];
+
+    //Widget return statement to run build
     return MaterialApp(
-          home: Scaffold(
-            appBar: AppBar(
-              title: Text('My Questionare!'), 
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('FaceBook Questions'), 
+        ),
+        body: Column(
+          children: [
+            Question(
+              questions[questionIndex], 
             ),
-          body: Column(
-            children: [
-             Question(
-               questions[questionIndex],
-             ),
-               RaisedButton(
-                 child: Text('answer 1'), 
-                 onPressed: answerQuestions,
-               ),
-               RaisedButton(
-                 child: Text("answer 2"), 
-                 onPressed: ()=>print("selected number 2"),
-               ),
-               ElevatedButton(
-                 style: ButtonStyle(
-                   backgroundColor: MaterialStateProperty.all(Colors.blue),
-                 ),
-                 child: Text('button 3'), 
-                 onPressed: answerQuestions,
-               ),
-            ],
-          ),
-          ),
-
+            Answer(_answerQuestions),
+            Answer(_answerQuestions),
+            Answer(_answerQuestions),
+          ],
+        ),
+      ), 
     );
-
   }
 }
