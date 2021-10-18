@@ -1,12 +1,14 @@
 //my_first_application continuation
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 //import question widget from qeustion file
 import './question.dart'; 
-
+import './answer.dart';
 void main() => runApp(myApp());
 
 //Home widget
-
+//myApp is parent widget of Question and Answer widgets
 class myApp extends StatefulWidget {
 
   @override
@@ -45,20 +47,11 @@ class _MyAppState extends State<myApp>{
            Question(
              questions[questionIndex],
            ),
-            RaisedButton(
-              child: Text('answer 1'),
-              onPressed: _answerQuestions,
-            ),
-            RaisedButton(
-                child: Text('answer 2'),
-                onPressed: () {
-                  print("Answer 2 chosen!");
-                }),
-            RaisedButton(
-                child: Text('answer 3'),
-                onPressed: () {
-                  print("Answer 3 chosen!");
-                }),
+           //replace question buttons with answer buttons
+            Answer(_answerQuestions), 
+            Answer(_answerQuestions), 
+            Answer(_answerQuestions), 
+            
           ],
         ),
       ),

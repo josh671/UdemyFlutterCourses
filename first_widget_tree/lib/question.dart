@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart'; 
-
+//custom stateless widget with first styling
 class Question extends StatelessWidget {
    final String questionText; 
 
@@ -15,6 +15,7 @@ class Question extends StatelessWidget {
       child:Text(questionText, 
                 style: TextStyle(fontSize: 28),
                                 textAlign: TextAlign.center,
-    ),);
+            ),
+    );
   }
 }

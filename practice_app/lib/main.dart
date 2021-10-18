@@ -53,7 +53,10 @@ class MyAppState extends State<MyApp>{
                  child: Text("answer 2"), 
                  onPressed: ()=>print("selected number 2"),
                ),
-               RaisedButton(
+               ElevatedButton(
+                 style: ButtonStyle(
+                   backgroundColor: MaterialStateProperty.all(Colors.blue),
+                 ),
                  child: Text('button 3'), 
                  onPressed: answerQuestions,
                ),
